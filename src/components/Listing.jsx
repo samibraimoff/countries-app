@@ -1,40 +1,26 @@
-import React, { useEffect, Fragment } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { Fragment } from 'react';
+import { useSelector } from 'react-redux';
 
-import { getCountries } from '../redux/actions/countryActions';
 import Card from './Card';
 
 import '../styles/listing.scss';
 
 const Listing = () => {
-  const dispatch = useDispatch();
   const { list, isLoading, error } = useSelector((state) => state.countries);
 
-  console.log(list);
-
-  useEffect(() => {
-    dispatch(getCountries());
-  }, [dispatch]);
-
-  return (
+  const renderCountries = isLoading ? (
+    <h2>Loading... </h2>
+  ) : error ? (
+    <h2>Something went wrong, please try again later.</h2>
+  ) : (
     <Fragment>
-      <section className='listing'>
-        <div className='loading'>
-          {isLoading && <h2>Loading countries... Please wait.</h2>}
-        </div>
-
-        <div className='error'>
-          {error && <h2>Something went wrong, please try again later.</h2>}
-        </div>
-
-        <div>
-          {list?.map((item, index) => (
-            <Card key={index} data={item} />
-          ))}
-        </div>
-      </section>
+      {list?.map((item, index) => (
+        <Card key={index} data={item} />
+      ))}
     </Fragment>
   );
+
+  return <section>{renderCountries}</section>;
 };
 
 export default Listing;

@@ -1,12 +1,11 @@
 import React from 'react';
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import Listing from './components/Listing';
+import Home from './pages/Home';
+import About from './pages/About';
 import ItemDetails from './components/ItemDetails';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import About from './components/About';
 
 import './styles/app.scss';
 
@@ -16,7 +15,7 @@ const App = () => {
       <Router>
         <Header />
         <Switch>
-          <Route path='/' exact component={Listing} />
+          <Route path='/' exact component={Home} />
           <Route path='/country/:id' component={ItemDetails} />
           <Route path='/about' component={About} />
         </Switch>
