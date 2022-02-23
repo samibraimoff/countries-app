@@ -3,6 +3,8 @@ import React, { Fragment } from 'react';
 import { useSelector } from 'react-redux';
 import CountryCard from './CountryCard';
 
+import '../styles/countrylist.scss';
+
 const CountryList = () => {
   const { list, isLoading, error } = useSelector((state) => state.countries);
   console.log(list);
@@ -23,7 +25,7 @@ const CountryList = () => {
     </Fragment>
   );
 
-  return <div>{renderCountries}</div>;
+  return <div className='list-container'>{renderCountries}</div>;
 };
 
 export default CountryList;
