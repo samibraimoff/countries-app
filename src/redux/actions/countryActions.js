@@ -30,14 +30,14 @@ export const getCountries = () => async (dispatch) => {
   }
 };
 
-const countryURL = 'https://restcountries.com/v3.1/name/';
+const countryNameURL = 'https://restcountries.com/v3.1/name/';
 
 export const getCountry = (name) => async (dispatch) => {
   dispatch({
     type: GET_COUNTRY_REQUEST,
   });
   try {
-    const response = await axios.get(countryURL + name);
+    const response = await axios.get(countryNameURL + name);
     dispatch({
       type: GET_COUNTRY_SUCCESS,
       payload: response.data,

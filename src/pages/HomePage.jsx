@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import Listing from '../components/Listing';
-import Search from '../components/Search';
+import CountryList from '../components/CountryList';
 import { getCountries } from '../redux/actions/countryActions';
 
 const Home = () => {
@@ -13,8 +12,7 @@ const Home = () => {
 
   return (
     <div>
-      <Search />
-      {/* <Listing /> */}
+      <CountryList />
     </div>
   );
 };
