@@ -18,10 +18,6 @@
   --radii: 0.5rem;
 }
 
-body {
-  margin: 0;
-}
-
 body[data-theme='dark'] {
   --color-text: hsl(0, 0, 100);
   --color-bg: hsl(207, 26, 17);
