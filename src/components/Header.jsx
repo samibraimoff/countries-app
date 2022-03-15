@@ -1,29 +1,41 @@
-import React, { Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import { Link } from 'react-router-dom';
-import { RiGlobeLine } from 'react-icons/ri';
+import styled from 'styled-components';
+import { IoMoon, IoMoonOutline } from 'react-icons/io5';
 
-import '../styles/header.scss';
+import { Container } from './Container';
 
-const Header = () => {
+const HeaderElement = styled.header`
+  box-shadow: var(--shadow);
+  background-color: var(--colors-ui-base);
+`;
+const Wrapper = styled.div``;
+const Title = styled.a.attrs({
+  href: '/',
+})``;
+const ModeSwitcher = styled.div``;
+
+export const Header = () => {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme);
+  }, [theme]);
+
   return (
-    <Fragment>
-      <nav>
-        <div className='logo-container'>
-          <RiGlobeLine className='logo' />
-          <span>Rest Countries</span>
-        </div>
-        <ul>
-          <li>
-            <Link to='/'>Home</Link>
-          </li>
-          <li>
-            <Link to='/about'>About</Link>
-          </li>
-        </ul>
-      </nav>
-    </Fragment>
+    <HeaderElement>
+      <Container>
+        <Wrapper>
+          <Title>World countries!</Title>
+          <ModeSwitcher onClick={toggleTheme}>
+            <IoMoon /> Light Theme
+          </ModeSwitcher>
+        </Wrapper>
+      </Container>
+    </HeaderElement>
   );
 };
-
-export default Header;
